@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+        <form class="form-signin" action="." method="post">{% csrf_token %}
+            <h2 class="form-signin-heading">로그인 해주세요.</h2>
+            <div class="form-row">
+                {{ form.username.label_tag }} {{ form.username }}
+            </div>
+
+            <div class="form-row">
+                {{ form.password.label_tag }} {{ form.password }}
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+        </form>
+
+    </div> <!-- /container -->
+
+{% endblock %}

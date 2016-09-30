@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'paircoding.apps.PaircodingConfig',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -55,8 +55,7 @@ ROOT_URLCONF = 'Foo_Bar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,8 +76,12 @@ WSGI_APPLICATION = 'Foo_Bar.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'foo_bar',
+        'USER': 'foo',
+        'PASSWORD': 'bar',
+        'HOST': '10.101.18.104',
+        'PORT': '3306',
     }
 }
 
@@ -105,9 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -120,3 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# LOGIN_URL = '/accounts/login/' # 로그인 필요 시 로그인 페이지로 리다이렉트 할 때 사용하는 URL(디폴트라 지정안함)
+#LOGOUT_URL = '/accounts/logout/'   # 로그아웃 시킬 때 사용하는 URL(디폴트라 지정안함)
+LOGIN_REDIRECT_URL = '/'    # 로그인 처리 성공 후 next 파라미터로 지정한 URL이 없는 경우, 이 URL로 리다이렉트 시킨다.

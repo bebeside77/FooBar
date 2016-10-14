@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1 style="text-align: center;">FooBar 회원 가입</h1>
+    </div>
+
+    <div class="container">
+        <form method="post" action="." style="width: 50%; margin: 0 auto;">{% csrf_token %}
+            {% if form.errors %}
+                <p style="color: red; font-weight: bold;">회원 가입 실패! 정확한 데이터를 입력해주세요.</p>
+            {% endif %}
+
+            <p>회원 가입에 필요한 데이터를 입력하세요.</p>
+
+            <div class="form-group">
+                <label for="id_username">아이디(이메일 주소)</label>
+                <input id="id_username" name="username" type="email" class="form-control" placeholder="아이디(이메일 주소)">
+            </div>
+            <div class="form-group">
+                <label for="id_password1">암호</label>
+                <input id="id_password1" name="password1" type="password" class="form-control" placeholder="암호">
+            </div>
+            <div class="form-group">
+                <label for="id_password2">암호 확인</label>
+                <input id="id_password2" name="password2" type="password" class="form-control" placeholder="암호 확인">
+            </div>
+
+            <button type="submit" class="btn btn-success">확인</button>
+        </form>
+
+    </div>
+
+{% endblock %}
